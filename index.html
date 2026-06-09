@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HARES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── BASE ── */
+    html, body {
+      background: #0a0a0a;
+      min-height: 100vh;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 420px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 48px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      aspect-ratio: 16 / 7;
+    }
+
+    .hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.85;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: auto 0 0;
+      height: 60%;
+      background: linear-gradient(to bottom, transparent, #0a0a0a);
+      pointer-events: none;
+    }
+
+    /* ── PROFILE ── */
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1.5px solid #ffffff33;
+      background: #151515;
+      overflow: hidden;
+      margin-top: -24px;
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-top: 12px;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .name span {
+      color: #ffffff55;
+      font-size: 22px;
+      letter-spacing: 0.18em;
+    }
+
+    .tagline {
+      font-size: 11px;
+      color: #ffffff55;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 5px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ── ROLES MARQUEE ── */
+    .roles-marquee {
+      width: 100%;
+      overflow: hidden;
+      margin-top: 12px;
+      mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    }
+
+    .roles-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: marquee-roles 10s linear infinite;
+    }
+
+    @keyframes marquee-roles {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .role-pill {
+      font-size: 9.5px;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #ffffffaa;
+      border: 0.5px solid #ffffff22;
+      border-radius: 20px;
+      padding: 4px 10px;
+      background: #ffffff08;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .role-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #ffffff25;
+      flex-shrink: 0;
+      margin: 0 10px;
+    }
+
+    /* ── SOCIAL ── */
+    .social-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .soc-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 0.5px solid #ffffff1a;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      color: #ffffffaa;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+
+    .soc-btn:hover {
+      background: #1e1e1e;
+      border-color: #ffffff44;
+      color: #fff;
+    }
+
+    /* ── LINKS ── */
+    .links {
+      width: 100%;
+      padding: 24px 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px;
+      border: 0.5px solid #ffffff1a;
+      border-radius: 6px;
+      background: #111111;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: #fff;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .link-btn:hover { background: #191919; border-color: #ffffff33; }
+    .link-btn:hover::before { opacity: 1; }
+
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 5px;
+      background: #1e1e1e;
+      border: 0.5px solid #ffffff15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+      color: #ffffffbb;
+    }
+
+    .btn-text {
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+    }
+
+    .btn-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-sub {
+      font-size: 11px;
+      color: #ffffff44;
+      margin-top: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    .btn-arrow {
+      font-size: 14px;
+      color: #ffffff25;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 32px;
+      padding-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-copy {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ffffff20;
+      text-align: center;
+    }
+
+    .footer-credit {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: #ffffff30;
+      text-align: center;
+    }
+
+    .footer-brand {
+      color: #ffffffaa;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-bottom: 0.5px solid #ffffff33;
+      padding-bottom: 1px;
+    }
+
+    /* ── ENTRANCE ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MODAL ── */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000000cc;
+      z-index: 100;
+      align-items: flex-end;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      width: 100%;
+      max-width: 420px;
+      background: #141414;
+      border-top: 0.5px solid #ffffff1a;
+      border-radius: 16px 16px 0 0;
+      padding: 20px 20px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      animation: slideUp 0.25s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      color: #fff;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 0.5px solid #ffffff1a;
+      background: #1e1e1e;
+      color: #ffffffaa;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .modal-close:hover { background: #2a2a2a; color: #fff; }
+
+    .modal iframe {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-open-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 6px;
+      border: 0.5px solid #ffffff1a;
+      background: #1e1e1e;
+      color: #ffffffbb;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .modal-open-btn:hover { background: #2a2a2a; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="hero">
+      <video src="videos/videohero.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- PERFIL -->
+    <div class="avatar fade-up">
+      <img src="imagens/fotohero.jpg" alt="Hares" />
+    </div>
+
+    <p class="name fade-up">HARES <span>| DJ & Visual Artist</span></p>
+    <p class="tagline fade-up">Turning sound & visuals into experiences</p>
+
+    <!-- ROLES MARQUEE -->
+    <div class="roles-marquee fade-up">
+      <div class="roles-track">
+        <span class="role-pill">DJ</span>
+        <div class="role-dot"></div>
+        <span class="role-pill">Producer</span>
+        <div class="role-dot"></div>
+        <span class="role-pill">Photographer</span>
+        <div class="role-dot"></div>
+        <span class="role-pill">DJ</span>
+        <div class="role-dot"></div>
+        <span class="role-pill">Producer</span>
+        <div class="role-dot"></div>
+        <span class="role-pill">Photographer</span>
+        <div class="role-dot"></div>
+      </div>
+    </div>
+
+    <!-- REDES SOCIAIS -->
+    <div class="social-row fade-up">
+      <a class="soc-btn" href="https://www.instagram.com/hares.wav/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="ti ti-brand-instagram" aria-hidden="true"></i>
+      </a>
+      <a class="soc-btn" href="https://api.whatsapp.com/send?phone=5548996631982" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+      </a>
+      <a class="soc-btn" href="https://www.youtube.com/@HARES.MUSICC" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="ti ti-brand-youtube" aria-hidden="true"></i>
+      </a>
+      <a class="soc-btn" href="https://open.spotify.com/intl-pt/artist/3Ox16mRtmEl2IePUiJOWFM" target="_blank" rel="noopener noreferrer" aria-label="Spotify" onclick="openModal('spotify', event)">
+        <i class="ti ti-brand-spotify" aria-hidden="true"></i>
+      </a>
+      <a class="soc-btn" href="https://soundcloud.com/haresxs" target="_blank" rel="noopener noreferrer" aria-label="SoundCloud" onclick="openModal('soundcloud', event)">
+        <i class="ti ti-brand-soundcloud" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <!-- LINKS -->
+    <div class="links fade-up">
+      <a class="link-btn" href="imagens/mediakit.pdf" onclick="openModal('mediakit', event)">
+        <div class="btn-icon"><i class="ti ti-music" aria-hidden="true"></i></div>
+        <div class="btn-text">
+          <div class="btn-label">Hares Project Music</div>
+          <div class="btn-sub">PDF · Documento</div>
+        </div>
+        <i class="ti ti-arrow-right btn-arrow" aria-hidden="true"></i>
+      </a>
+
+      <a class="link-btn" href="imagens/portifolioongallery.pdf" onclick="openModal('fotografia', event)">
+        <div class="btn-icon"><i class="ti ti-camera" aria-hidden="true"></i></div>
+        <div class="btn-text">
+          <div class="btn-label">Fotografia de Eventos</div>
+          <div class="btn-sub">Portfólio</div>
+        </div>
+        <i class="ti ti-arrow-right btn-arrow" aria-hidden="true"></i>
+      </a>
+
+      <a class="link-btn" href="imagens/socialmedia.pdf" onclick="openModal('socialmedia', event)">
+        <div class="btn-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+        <div class="btn-text">
+          <div class="btn-label">Portfólio Social Media</div>
+          <div class="btn-sub">Gestão & conteúdo</div>
+        </div>
+        <i class="ti ti-arrow-right btn-arrow" aria-hidden="true"></i>
+      </a>
+    </div>
+
+    <!-- RODAPÉ -->
+    <div class="footer fade-up">
+      <p class="footer-copy">© 2026 HARES · Todos os direitos reservados</p>
+      <p class="footer-credit">Site produzido por <span class="footer-brand">Amplifying</span></p>
+    </div>
+
+  </div>
+
+  <!-- MODAL: FOTOGRAFIA -->
+  <div class="modal-backdrop" id="modal-fotografia" onclick="closeOnBackdrop(event, 'fotografia')">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Fotografia de Eventos</span>
+        <button class="modal-close" onclick="closeModal('fotografia')"><i class="ti ti-x"></i></button>
+      </div>
+      <iframe id="iframe-fotografia" src="" height="480" loading="lazy"></iframe>
+      <div class="modal-actions">
+        <a class="modal-open-btn" href="imagens/portifolioongallery.pdf" download rel="noopener noreferrer">
+          <i class="ti ti-download"></i> Baixar PDF
+        </a>
+        <a class="modal-open-btn" href="https://api.whatsapp.com/send?phone=5548996631982&text=Oi!%20Eu%20gostaria%20de%20falar%20mais%20sobre%20Fotografia%20de%20Eventos.%20Podemos%20agendar%20um%20hor%C3%A1rio%20para%20conversar%3F" target="_blank" rel="noopener noreferrer">
+          <i class="ti ti-brand-whatsapp"></i> Contato
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SOCIAL MEDIA -->
+  <div class="modal-backdrop" id="modal-socialmedia" onclick="closeOnBackdrop(event, 'socialmedia')">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Portfólio Social Media</span>
+        <button class="modal-close" onclick="closeModal('socialmedia')"><i class="ti ti-x"></i></button>
+      </div>
+      <iframe id="iframe-socialmedia" src="" height="480" loading="lazy"></iframe>
+      <div class="modal-actions">
+        <a class="modal-open-btn" href="imagens/socialmedia.pdf" download rel="noopener noreferrer">
+          <i class="ti ti-download"></i> Baixar PDF
+        </a>
+        <a class="modal-open-btn" href="https://api.whatsapp.com/send?phone=5548996631982&text=Oi!%20Eu%20gostaria%20de%20falar%20mais%20sobre%20Gest%C3%A3o%20de%20Social%20Media.%20Podemos%20agendar%20um%20hor%C3%A1rio%20para%20conversar%3F" target="_blank" rel="noopener noreferrer">
+          <i class="ti ti-brand-whatsapp"></i> Contato
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: MEDIAKIT -->
+  <div class="modal-backdrop" id="modal-mediakit" onclick="closeOnBackdrop(event, 'mediakit')">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Hares Project Music</span>
+        <button class="modal-close" onclick="closeModal('mediakit')"><i class="ti ti-x"></i></button>
+      </div>
+      <iframe id="iframe-mediakit" src="" height="480" loading="lazy"></iframe>
+      <div class="modal-actions">
+        <a class="modal-open-btn" href="imagens/mediakit.pdf" download rel="noopener noreferrer">
+          <i class="ti ti-download"></i> Baixar PDF
+        </a>
+        <a class="modal-open-btn" href="https://api.whatsapp.com/send?phone=5548996631982&text=Oi!%20Eu%20gostaria%20de%20falar%20mais%20sobre%20o%20Hares%20Project%20Music.%20Podemos%20agendar%20um%20hor%C3%A1rio%20para%20conversar%3F" target="_blank" rel="noopener noreferrer">
+          <i class="ti ti-brand-whatsapp"></i> Contato
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: SPOTIFY -->
+  <div class="modal-backdrop" id="modal-spotify" onclick="closeOnBackdrop(event, 'spotify')">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">Spotify · HARES</span>
+        <button class="modal-close" onclick="closeModal('spotify')"><i class="ti ti-x"></i></button>
+      </div>
+      <iframe id="iframe-spotify" src="" height="352" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <a class="modal-open-btn" href="https://open.spotify.com/intl-pt/artist/3Ox16mRtmEl2IePUiJOWFM" target="_blank" rel="noopener noreferrer">
+        <i class="ti ti-brand-spotify"></i> Abrir no Spotify
+      </a>
+    </div>
+  </div>
+
+  <!-- MODAL: SOUNDCLOUD -->
+  <div class="modal-backdrop" id="modal-soundcloud" onclick="closeOnBackdrop(event, 'soundcloud')">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">SoundCloud · HARES</span>
+        <button class="modal-close" onclick="closeModal('soundcloud')"><i class="ti ti-x"></i></button>
+      </div>
+      <iframe id="iframe-soundcloud" src="" height="300" scrolling="no" loading="lazy"></iframe>
+      <a class="modal-open-btn" href="https://soundcloud.com/haresxs" target="_blank" rel="noopener noreferrer">
+        <i class="ti ti-brand-soundcloud"></i> Abrir no SoundCloud
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Proteção contra clickjacking
+    if (window.top !== window.self) window.top.location = window.self.location;
+
+    // ── ENTRANCE ANIMATIONS ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 80}ms`;
+      observer.observe(el);
+    });
+
+    // ── MODAIS ──
+    const MODAL_IDS = ['mediakit', 'fotografia', 'socialmedia', 'spotify', 'soundcloud'];
+    const PDF_IDS   = ['mediakit', 'fotografia', 'socialmedia'];
+
+    const sources = {
+      mediakit:    'imagens/mediakit.pdf',
+      fotografia:  'imagens/portifolioongallery.pdf',
+      socialmedia: 'imagens/socialmedia.pdf',
+      spotify:     'https://open.spotify.com/embed/artist/3Ox16mRtmEl2IePUiJOWFM?utm_source=generator&theme=0',
+      soundcloud:  'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/haresxs&color=%23ff5500&auto_play=false&show_artwork=true&show_user=true'
+    };
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    // Substitui iframes de PDF por canvas (PDF.js) no mobile
+    if (isMobile) {
+      // Carrega PDF.js uma única vez
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+      document.head.appendChild(script);
+
+      PDF_IDS.forEach(id => {
+        const iframe = document.getElementById('iframe-' + id);
+        const wrapper = document.createElement('div');
+        wrapper.id = 'pdfwrap-' + id;
+        wrapper.style.cssText = 'overflow-y:auto;max-height:70vh;border-radius:10px;background:#1a1a1a;';
+        iframe.replaceWith(wrapper);
+      });
+    }
+
+    async function renderPdf(id, url) {
+      const wrapper = document.getElementById('pdfwrap-' + id);
+      if (!wrapper || wrapper.dataset.loaded) return;
+      wrapper.dataset.loaded = '1';
+      wrapper.innerHTML = '<p style="color:#ffffff44;font-size:12px;padding:16px;text-align:center">Carregando...</p>';
+
+      const pdfjsLib = window['pdfjs-dist/build/pdf'];
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+      const pdf = await pdfjsLib.getDocument(url).promise;
+      wrapper.innerHTML = '';
+
+      for (let p = 1; p <= pdf.numPages; p++) {
+        const page    = await pdf.getPage(p);
+        const scale   = wrapper.clientWidth / page.getViewport({ scale: 1 }).width;
+        const viewport = page.getViewport({ scale });
+        const canvas  = document.createElement('canvas');
+        canvas.width  = viewport.width;
+        canvas.height = viewport.height;
+        canvas.style.cssText = 'display:block;width:100%;margin-bottom:4px;';
+        wrapper.appendChild(canvas);
+        await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+      }
+    }
+
+    function openModal(id, e) {
+      e.preventDefault();
+      if (isMobile && PDF_IDS.includes(id)) {
+        // PDF.js pode ainda estar carregando; aguarda se necessário
+        const tryRender = () => {
+          if (window['pdfjs-dist/build/pdf']) renderPdf(id, sources[id]);
+          else setTimeout(tryRender, 100);
+        };
+        tryRender();
+      } else {
+        const iframe = document.getElementById('iframe-' + id);
+        if (!iframe.src || iframe.src === window.location.href) iframe.src = sources[id];
+      }
+      document.getElementById('modal-' + id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById('modal-' + id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeOnBackdrop(e, id) {
+      if (e.target === e.currentTarget) closeModal(id);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        MODAL_IDS.forEach(closeModal);
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>
