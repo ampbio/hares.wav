@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HARES</title>
+  <link rel="icon" type="image/png" href="imagens/haresfav.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -286,12 +287,18 @@
     }
 
     .footer-brand {
-      color: #ffffffaa;
+      color: #FF6200;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      border-bottom: 0.5px solid #ffffff33;
+      border-bottom: 0.5px solid #FF620055;
       padding-bottom: 1px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .footer-brand:hover {
+      opacity: 0.8;
     }
 
     /* ── ENTRANCE ANIMATIONS ── */
@@ -486,7 +493,7 @@
     <!-- RODAPÉ -->
     <div class="footer fade-up">
       <p class="footer-copy">© 2026 HARES · Todos os direitos reservados</p>
-      <p class="footer-credit">Site produzido por <span class="footer-brand">Amplifying</span></p>
+      <p class="footer-credit">Site produzido por <a class="footer-brand" href="https://amplifyingmkt.com.br" target="_blank" rel="noopener noreferrer">Amplifying</a></p>
     </div>
 
   </div>
@@ -662,7 +669,7 @@
         tryRender();
       } else {
         const iframe = document.getElementById('iframe-' + id);
-        if (!iframe.src || iframe.src === window.location.href) iframe.src = sources[id];
+        if (iframe && (!iframe.src || iframe.src === window.location.href)) iframe.src = sources[id];
       }
       document.getElementById('modal-' + id).classList.add('open');
       document.body.style.overflow = 'hidden';
