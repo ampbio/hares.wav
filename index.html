@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HARES - Links de Direcionamento</title>
+  <title>HARES | DJ & Visual Artist</title>
   <link rel="icon" type="image/png" href="imagens/haresfav.png" />
+  <meta name="description" content="HARES | DJ & Visual Artist - Turning sound & visuals into experiences - DJ • Producer • Photographer. Visite o site para mais informações!" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn, Telegram etc.) -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://ampbio.github.io/hares.wav/" />
+  <meta property="og:title"       content="HARES | DJ & Visual Artist" />
+  <meta property="og:description" content="HARES | DJ & Visual Artist - Turning sound &amp; visuals into experiences - DJ • Producer • Photographer. Visite o site para mais informações!" />
+  <meta property="og:image"       content="https://ampbio.github.io/hares.wav/imagens/haresthumb.png" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale"      content="pt_BR" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:url"         content="https://ampbio.github.io/hares.wav/" />
+  <meta name="twitter:title"       content="HARES | DJ & Visual Artist" />
+  <meta name="twitter:description" content="HARES | DJ & Visual Artist - Turning sound &amp; visuals into experiences - DJ • Producer • Photographer. Visite o site para mais informações!" />
+  <meta name="twitter:image"       content="https://ampbio.github.io/hares.wav/imagens/haresthumb.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.24.0/tabler-icons.min.css" />
   <style>
     /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -123,6 +141,10 @@
     @keyframes marquee-roles {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .roles-track { animation: none; }
     }
 
     .role-pill {
@@ -411,7 +433,7 @@
 
     <!-- HERO -->
     <div class="hero">
-      <video src="videos/videohero.mp4" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="videos/videohero.mp4" poster="imagens/haresthumb.png" autoplay muted loop playsinline preload="metadata"></video>
       <div class="hero-overlay"></div>
     </div>
 
@@ -503,7 +525,7 @@
     <div class="modal">
       <div class="modal-header">
         <span class="modal-title">Fotografia de Eventos</span>
-        <button class="modal-close" onclick="closeModal('fotografia')"><i class="ti ti-x"></i></button>
+        <button class="modal-close" aria-label="Fechar modal" onclick="closeModal('fotografia')"><i class="ti ti-x"></i></button>
       </div>
       <iframe id="iframe-fotografia" src="" height="480" loading="lazy"></iframe>
       <div class="modal-actions">
@@ -522,7 +544,7 @@
     <div class="modal">
       <div class="modal-header">
         <span class="modal-title">Portfólio Social Media</span>
-        <button class="modal-close" onclick="closeModal('socialmedia')"><i class="ti ti-x"></i></button>
+        <button class="modal-close" aria-label="Fechar modal" onclick="closeModal('socialmedia')"><i class="ti ti-x"></i></button>
       </div>
       <iframe id="iframe-socialmedia" src="" height="480" loading="lazy"></iframe>
       <div class="modal-actions">
@@ -541,7 +563,7 @@
     <div class="modal">
       <div class="modal-header">
         <span class="modal-title">Hares Project Music</span>
-        <button class="modal-close" onclick="closeModal('mediakit')"><i class="ti ti-x"></i></button>
+        <button class="modal-close" aria-label="Fechar modal" onclick="closeModal('mediakit')"><i class="ti ti-x"></i></button>
       </div>
       <iframe id="iframe-mediakit" src="" height="480" loading="lazy"></iframe>
       <div class="modal-actions">
@@ -560,7 +582,7 @@
     <div class="modal">
       <div class="modal-header">
         <span class="modal-title">Spotify · HARES</span>
-        <button class="modal-close" onclick="closeModal('spotify')"><i class="ti ti-x"></i></button>
+        <button class="modal-close" aria-label="Fechar modal" onclick="closeModal('spotify')"><i class="ti ti-x"></i></button>
       </div>
       <iframe id="iframe-spotify" src="" height="352" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       <a class="modal-open-btn" href="https://open.spotify.com/intl-pt/artist/3Ox16mRtmEl2IePUiJOWFM" target="_blank" rel="noopener noreferrer">
@@ -574,7 +596,7 @@
     <div class="modal">
       <div class="modal-header">
         <span class="modal-title">SoundCloud · HARES</span>
-        <button class="modal-close" onclick="closeModal('soundcloud')"><i class="ti ti-x"></i></button>
+        <button class="modal-close" aria-label="Fechar modal" onclick="closeModal('soundcloud')"><i class="ti ti-x"></i></button>
       </div>
       <iframe id="iframe-soundcloud" src="" height="300" scrolling="no" loading="lazy"></iframe>
       <a class="modal-open-btn" href="https://soundcloud.com/haresxs" target="_blank" rel="noopener noreferrer">
